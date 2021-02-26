@@ -2,6 +2,8 @@
 # 02-25-2021
 # CIS112 - Spring 2021
 # Assignment 3
+# PURPOSE:  Using the Turtle module, create a series of polygons
+#           utilizing loops and passing values between the functions
 
 if __name__ == "__main__":
 
@@ -20,22 +22,17 @@ if __name__ == "__main__":
     blueKoopa.color("blue")
     blueKoopa.hideturtle()
 
-    # Function definitions
+    # Function Definitions
     def getSides():
-        return int(input("Please enter the number of sides of the polygon: "))
-    
+        return int(input("Please enter the number of sides of the polygon: "))    
     def getLength():
         return int(input("Please enter the length of sides of the polygon: "))
-
     def getScale():
         return int(input("Please enter the scale factor of the polygon: "))
-
     def getAngle():
         return int(input("Please enter the angle of rotation: "))
-
     def getRepeat():
         return int(input("Please enter the number of repetitions: "))
-
     def getNumber():
         return int(input("Please enter the number of copies: "))
 
@@ -50,7 +47,7 @@ if __name__ == "__main__":
         Koopa.hideturtle()
 
     def SpinPolygon(Koopa, sides, angle, length, repeat):     
-        redKoopa.clear()   
+        redKoopa.clear()        #Global reference to clear screen of previous geometery
         Koopa.showturtle()        
         for i in range(repeat):
             for j in range(sides):
@@ -60,7 +57,7 @@ if __name__ == "__main__":
         Koopa.hideturtle()
 
     def ScalePolygon(Koopa, sides, length, sfactor, number):
-        greenKoopa.clear()
+        greenKoopa.clear()      #Global reference to clear screen of previous geometery
         Koopa.showturtle()        
         for i in range(number):
             for j in range(sides):
@@ -77,7 +74,7 @@ if __name__ == "__main__":
     SpinPolygon(greenKoopa, sides, getAngle(), length, getRepeat())
     ScalePolygon(blueKoopa, sides, length, getScale(), getNumber())
 
-    print("\n\nSafe to Close Graphic Window to Proceed...")
+    print("\n\nSafe to Close Python Turtle Graphics Window to Proceed...")
     turtle.done()
     # End Mainloop
     
