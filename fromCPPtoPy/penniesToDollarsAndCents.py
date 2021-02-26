@@ -15,12 +15,12 @@ if __name__ == "__main__":
     pennies = (((numPennies % 100) % 25) % 10) % 5
     exchangeRate = 1.33
 
-    print("In US currency you have: " + 
-        str(int(dollars)) + " dollars " + 
-        str(int(quarters)) + " quarters " + 
-        str(int(dimes)) + " dimes " +
-        str(int(nickles)) + " nickles " + 
-        str(int(pennies)) + " pennies.\n" +
-        "In Canadian currency you have: $" + str((int(numPennies * exchangeRate) / 100)) + " dollars.")
+    #New formatting using fString
+    print(f"In US currency you have: {dollars:.0f} dollars, {quarters:.0f} quarters, {dimes:.0f} dimes, {nickles:.0f} nickles, {pennies:.0f} pennies.\n" +
+          f"In Canadian currency you have: ${(numPennies * exchangeRate / 100):.2f} dollars.")
+
+    #Old School formatting
+    print("In US currency you have: %d dollars, %d quarters, %d dimes, %d nickles, %d pennies.\n"%(dollars, quarters, dimes, nickles, pennies) +
+          "In Canadian currency you have: $%.2f dollars."%(numPennies * exchangeRate / 100))
 
 
