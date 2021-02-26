@@ -23,7 +23,7 @@ if __name__ == "__main__":
     y = 60   
 
     while side > 0:
-        turtle.goto(x, y)
+        turtle.goto(x,y)
         turtle.pendown()
         turtle.forward(side)
         turtle.right(90)
@@ -36,5 +36,6 @@ if __name__ == "__main__":
         side -= shrink * 2
         x += shrink
         y -= shrink
-        turtle.penup()        
+        turtle.penup()
+    
     turtle.done()
