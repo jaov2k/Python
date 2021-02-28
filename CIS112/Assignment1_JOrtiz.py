@@ -16,12 +16,12 @@ def GetDays():
     year = int(input("Please enter the 4 digit year: "))
     month = int(input("Please enter the month: "))
 
-    daysInMonths = [31,28,31,30,31,30,31,31,30,31,30,31]
+    daysInMonths = {1:31,2:28,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31}
 
     if IsLeap(year) and month == 2:
         print(f"Year {year} Month 2 has 29 days in a month")
     else:
-        print(f"Year {year} Month {month} has {daysInMonths[month-1]} days in a month")
+        print(f"Year {year} Month {month} has {daysInMonths[month]} days in a month")
 
 if __name__=="__main__":
     while True:
