@@ -11,7 +11,7 @@ PURPOSE:
 def IsLeap(year):
     return True if not(year % 4) else False
 
-def getDays():
+def GetDays():
     '''To determine number of days in a given month'''    
     year = int(input("Please enter the 4 digit year: "))
     month = int(input("Please enter the month: "))
@@ -25,7 +25,7 @@ def getDays():
 
 if __name__=="__main__":
     while True:
-        getDays()
+        GetDays()
         if input("Do you want to repeat (Y/N): ").lower() == 'y':
             True
         else:
