@@ -3,7 +3,9 @@
 # CIS112 - Spring 2021
 # Assignment 3
 # PURPOSE:  Using the Turtle module, create a series of polygons
-#           utilizing loops and passing values between the functions
+#           utilizing loops and passing values between the functions.
+#           Made variable names obvious to their local scope to emphasize
+#           them being passed between the functions.
 
 #Koopa Troopas
 import turtle
@@ -55,7 +57,6 @@ if __name__ == "__main__":
     mainKoopa = SpinPolygon(mainKoopa, mainSides, getAngle(), mainLength, getRepeat())
     mainKoopa.color("blue")
     ScalePolygon(mainKoopa, mainSides, mainLength, getScale(), getNumber())
-    mainKoopa.hideturtle()
 
     print("\n\nSafe to Close Python Turtle Graphics Window to Proceed...")
     turtle.done()
