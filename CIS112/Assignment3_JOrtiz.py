@@ -7,18 +7,6 @@
 
 #Koopa Troopas
 import turtle
-redKoopa = turtle.Turtle()
-redKoopa.shape("turtle")
-redKoopa.color("red")
-redKoopa.hideturtle()
-greenKoopa = turtle.Turtle()  
-greenKoopa.shape("turtle")  
-greenKoopa.color("green")
-greenKoopa.hideturtle()
-blueKoopa = turtle.Turtle()
-blueKoopa.shape("turtle")
-blueKoopa.color("blue")
-blueKoopa.hideturtle()
 
 # Function Definitions
 def getSides():
@@ -34,44 +22,40 @@ def getRepeat():
 def getNumber():
     return int(input("Please enter the number of copies: "))
 
-def Angles(sides):
-    return 360 / sides
+def Angles(angleSides):
+    return 360 / angleSides
 
-def DrawShape(Koopa, sides, length):
-    Koopa.showturtle()        
-    for i in range(sides):
-        Koopa.forward(length)
-        Koopa.left(Angles(sides))
-    Koopa.hideturtle()
+def DrawShape(drawKoopa, drawSides, drawLength):
+    for i in range(drawSides):
+        drawKoopa.forward(drawLength)
+        drawKoopa.left(Angles(drawSides))
+    return drawSides, drawLength, drawKoopa    
 
-def SpinPolygon(Koopa, sides, angle, length, repeat):     
-    redKoopa.clear()       #Global reference to clear screen of previous geometery
-    Koopa.showturtle()        
-    for i in range(repeat):
-        for j in range(sides):
-            Koopa.forward(length)
-            Koopa.left(Angles(sides))
-        Koopa.left(angle)
-    Koopa.hideturtle()
-
-def ScalePolygon(Koopa, sides, length, sfactor, number):
-    greenKoopa.clear()      #Global reference to clear screen of previous geometery
-    Koopa.showturtle()        
-    for i in range(number):
-        for j in range(sides):
-            Koopa.forward(length)
-            Koopa.left(Angles(sides))
-        length *= sfactor
-        Koopa.hideturtle()
+def SpinPolygon(spinKoopa, spinSides, spinAngle, spinLength, spinRepeat):
+    spinKoopa.clear() 
+    for i in range(spinRepeat):
+        DrawShape(spinKoopa, spinSides, spinLength)
+        spinKoopa.left(spinAngle)
+    return spinKoopa  
+    
+def ScalePolygon(scaleKoopa, scaleSides, scaleLength, scaleSfactor, scaleNumber): 
+    scaleKoopa.clear()     
+    for i in range(scaleNumber):
+        DrawShape(scaleKoopa, scaleSides, scaleLength)
+        scaleLength *= scaleSfactor
     
 # Mainloop starts here
 if __name__ == "__main__":
-    sides = getSides()
-    length = getLength()
-    
-    DrawShape(redKoopa, sides, length)
-    SpinPolygon(greenKoopa, sides, getAngle(), length, getRepeat())
-    ScalePolygon(blueKoopa, sides, length, getScale(), getNumber())
+    mainKoopa = turtle.Turtle()
+    mainKoopa.shape("turtle")
+
+    mainKoopa.color("red")        
+    mainSides, mainLength, mainKoopa = DrawShape(mainKoopa, getSides(), getLength())
+    mainKoopa.color("green")
+    mainKoopa = SpinPolygon(mainKoopa, mainSides, getAngle(), mainLength, getRepeat())
+    mainKoopa.color("blue")
+    ScalePolygon(mainKoopa, mainSides, mainLength, getScale(), getNumber())
+    mainKoopa.hideturtle()
 
     print("\n\nSafe to Close Python Turtle Graphics Window to Proceed...")
     turtle.done()
