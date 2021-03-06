@@ -1,5 +1,5 @@
 # PURPOSE:  Small program to display the Nim game
-#           Its a single pile of pebbles
+#           Its a single pile of pebbles.
 #           Players can take 1 to 8 stones per turn.
 
 def canAlwaysWin(n):
