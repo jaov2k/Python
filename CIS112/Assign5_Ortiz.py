@@ -29,17 +29,21 @@ def copyGamma(arrayA:list, arrayB:list) -> list:
         arrayA[i] = arrayB[i]
     return arrayA
 
-def copyAlphaBeta():
-    pass
+def copyAlphaBeta(arrayA:list, arrayB:list, arrayC:list) -> list:
+    '''the function copyAlphaBeta that stores alpha into the first five rows of inStock, 
+       and beta into the last five rows of inStock.'''
 
-def printArray(array):
+def printArray(array: list) -> list:
+    '''The function, printArray, prints any one-dimensional list.'''
     for i in range(len(array)):
         print(array[i], "\t", end='')
         if i == 9:
             print()
 
-def setInStock():
-    pass
+def setInStock(arrayA:list, arrayB:list)->list:
+    '''The function, setInStock, prompts the user to input the elements for the first column of inStock.
+       The function then sets the elements in the remaining columns to two times the corresponding element in the previous column, 
+       minus the corresponding element in delta.'''
 
 if __name__ == "__main__":
     inStock = [[0 for i in range(4)] for i in range(10)]
