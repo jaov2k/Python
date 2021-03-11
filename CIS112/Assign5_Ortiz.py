@@ -1,47 +1,33 @@
-# Create the following lists:
-
-# inStock - 2D list (row size:10, column size:4)
-# alpha - 1D list with 20 elements.
-# beta - 1D list with 20 elements.
-# gamma = [11, 13, 15, 17]
-# delta = [3, 5, 2, 6, 10, 9, 7, 11, 1, 8]
-
- 
-
-# a. Write the definition of the function setZero that initializes any one-dimensional list to 0 (alpha and beta).
-
-# b. Write the definition of the function inputArray that prompts the user to input 20 numbers and stores the numbers into alpha.
-
-# c. Write the definition of the function doubleArray that initializes the elements of beta to two times the corresponding elements in alpha.  
-
-# d. Write the definition of the function copyGamma that sets the elements of the first row of inStock from gamma and the remaining rows of inStock to three times the previous row of inStock.  
-
-# e. Write the definition of the function copyAlphaBeta that stores alpha into the first five rows of inStock and beta into the last five rows of inStock.  
-
-# f. Write the definition of the function printArray that prints any one-dimensional list.  The function must contain only one loop to print any one-dimensional list.  
-
-# g. Write the definition of the function setInStock that prompts the user to input the elements for the first column of inStock.  
-#    The function should then set the elements in the remaining columns to two times the corresponding element in the previous column, minus the corresponding element in delta.
-
-inStock = [[0 for i in range(4)] for i in range(10)]
-alpha = []
-beta = []
-gamma = [11, 13, 15, 17]
-delta = [3, 5, 2, 6, 10, 9, 7, 11, 1, 8]
-
-def setZero(array):
+def setZero(array:list)->list:
+    '''The setZero function initializes a single dimension array to 20 elements of 0'''
     array = [0 for i in range(20)]
     return array
 
-def inputArray(array):
-    print("\nEnter 20 integers:\n")
-    printArray(array)
+def inputArray(array: list) -> list:
+    '''The inputArray function asks the user for 20 integers.'''
+    print('\n\nEnter 20 integers:')
+    for i in range(len(array)):
+        # safe to uncomment when finished testing
+        #array[i] = int(input())
 
-def doubleArray(arrayA, arrayB):
-    pass
+        #for testing purposes        
+        array[i] = i + 1
+        print(array[i])
+    return array
 
-def copyGamma(arrayA, arrayB, arrayC):
-    pass
+def doubleArray(arrayA:list, arrayB:list) -> list:
+    '''The doubleArray function doubles the first array's element values, 
+       and places them in the second array'''
+    for i in range(len(arrayA)):
+        arrayB[i] = arrayA[i] * 2
+    return arrayB
+
+def copyGamma(arrayA:list, arrayB:list) -> list:
+    '''The function copyGamma sets the elements of the first row of arrayA from arrayB,
+       and the remaining rows of inStock to three times the previous row of arrayA.'''
+    for i in range(len(arrayB)):
+        arrayA[i] = arrayB[i]
+    return arrayA
 
 def copyAlphaBeta():
     pass
@@ -56,6 +42,23 @@ def setInStock():
     pass
 
 if __name__ == "__main__":
-    print("Alpha after initialization:")
-    printArray(setZero(alpha))
-    inputArray(alpha)
+    inStock = [[0 for i in range(4)] for i in range(10)]
+    alpha = []
+    beta = []
+    gamma = [11, 13, 15, 17]
+    delta = [3, 5, 2, 6, 10, 9, 7, 11, 1, 8]
+
+    alpha = setZero(alpha)
+    beta = setZero(beta)
+
+    print("\nAlpha after initialization:")
+    printArray(alpha)
+    alpha = inputArray(alpha)
+    print('\n\nAlpha after reading 20 numbers:')
+    printArray(alpha)    
+    beta = doubleArray(alpha, beta)
+    print('\n\nBeta after a call to doubleArray:')
+    printArray(beta)
+    inStock = copyGamma(inStock, gamma)
+    print('\n\ninStock after a call to copyGamma:')
+    printArray(inStock)
