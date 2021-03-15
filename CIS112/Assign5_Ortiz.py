@@ -1,3 +1,10 @@
+# Jose Ortiz
+# 03-15-2021
+# CIS112 - Spring 2021
+# Assignment 5
+#
+# PURPOSE:  To practice using the list object in python.
+
 def setZero(array:list)->list:
     '''The setZero function initializes a single dimension array to 20 elements of 0'''
 
