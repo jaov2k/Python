@@ -8,13 +8,8 @@ def inputArray(array: list) -> list:
     '''The inputArray function asks the user for 20 integers.'''
 
     print('\n\nEnter 20 integers:')
-    for i in range(len(array)):
-        # safe to uncomment when finished testing
-        #array[i] = int(input())
-
-        #for testing purposes        
-        array[i] = i + 1
-        print(array[i])
+    for i in range(len(array)):        
+        array[i] = int(input())
     return array
 
 def doubleArray(arrayA:list, arrayB:list) -> list:
@@ -43,9 +38,10 @@ def copyGamma(arrayA:list, arrayB:list):
             if j==3:
                 print()
 
-def copyAlphaBeta(arrayA:list, arrayB:list, arrayC:list) -> list:
+def copyAlphaBeta(arrayA:list, arrayB:list, arrayC:list):
     '''The function copyAlphaBeta that stores alpha into the first five rows of inStock, 
        and beta into the last five rows of inStock.'''
+
     counter = 0
     for i in range(len(arrayA) // 2):
         for j in range(len(arrayA[i])):
@@ -64,19 +60,35 @@ def copyAlphaBeta(arrayA:list, arrayB:list, arrayC:list) -> list:
             if j==3:
                 print()
     
-
-def printArray(array: list) -> list:
+def printArray(array: list):
     '''The function, printArray, prints any one-dimensional list.'''
+
     for i in range(len(array)):
         print(array[i], "\t", end='')
         if i == 9:
             print()
 
-def setInStock(arrayA:list, arrayB:list)->list:
+def setInStock(arrayA:list, arrayB:list):
     '''The function, setInStock, prompts the user to input the elements for the first column of inStock.
        The function then sets the elements in the remaining columns to two times the corresponding element in the previous column, 
        minus the corresponding element in delta.'''
 
+    print("\n\nEnter 10 integers:")
+    for i in range(len(arrayA)):
+        arrayA[i][0] = int(input().strip())
+    for i in range(len(arrayA)):
+        for j in range(1,len(arrayA[i])):
+            arrayA[i][j] = (arrayA[i][j-1] * 2) - arrayB[i]
+
+    print('\n\ninStock after a call to setInStock:')
+    for i in range(len(arrayA)):
+        for j in range(len(arrayA[i])):
+            print(arrayA[i][j],'\t',end='')
+            if j==3:
+                print()
+
+
+# MAIN LOOP STARTS HERE
 if __name__ == "__main__":
     inStock = [[0 for i in range(4)] for i in range(10)]
     alpha = []
@@ -97,3 +109,4 @@ if __name__ == "__main__":
     printArray(beta)
     copyGamma(inStock, gamma)
     copyAlphaBeta(inStock,alpha,beta)
+    setInStock(inStock,delta)
