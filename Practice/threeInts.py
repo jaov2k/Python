@@ -14,27 +14,27 @@ except:
     print("Please enter a number")
 
 #SMALLEST NUMBER
-if a < b and a < c:
+if a <= b and a <= c:
     small = a
-elif b < c and b < a:
+elif b <= c and b <= a:
     small = b
-else:
+elif c <= a and c <= b:
     small = c
    
 #MIDDLE NUMBER
-if (a < c and a > b) or (a < b and a > c):
+if (a <= c and a >= b) or (a <= b and a >= c):
     middle = a
-elif (b > a and b < c) or (b > c and b < a):
+elif (b <= a and b >= c) or (b <= c and b >= a):
     middle = b
-elif (c > a and c < b) or (c > b and c < a):
+elif (c <= a and c >= b) or (c <= b and c >= a):
     middle = c
 
 #LARGEST NUMBER
-if a > b and a > c:
+if a >= b and a >= c:
     large = a
-elif a < b and c < b:
+elif b >= a and b >= c:
     large = b
-else:
+elif c >= a and c >= b:
     large = c
 
 #Now displaying user input which is sorted high to low, low to high
