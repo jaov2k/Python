@@ -13,30 +13,41 @@ try:
 except:
     print("Please enter a number")
 
-#SMALLEST NUMBER
-if a <= b and a <= c:
-    small = a
-elif b <= c and b <= a:
-    small = b
-elif c <= a and c <= b:
-    small = c
-   
-#MIDDLE NUMBER
-if (a <= c and a >= b) or (a <= b and a >= c):
-    middle = a
-elif (b <= a and b >= c) or (b <= c and b >= a):
-    middle = b
-elif (c <= a and c >= b) or (c <= b and c >= a):
-    middle = c
+if a <= b <= c:
+    print("The numbers in ascending order are: ", a, b, c)
+    print("The numbers in descending order are: ", c, b, a)
+elif a <= c <= b:
+    print("The numbers in ascending order are: ", a, c, b)
+    print("The numbers in descending order are: ", b, c, a)
+elif b <= a <= c:
+    print("The numbers in ascending order are: ", b, a, c)
+    print("The numbers in descending order are: ", c, a, b)
+elif c <= a <= b:
+    print("The numbers in ascending order are: ", a, b, c)
+    print("The numbers in descending order are: ", c, b, a)
+elif b <= c <= a:
+    print("The numbers in ascending order are: ", c, a, b)
+    print("The numbers in descending order are: ", b, a, c)
+elif c <= b <= a:
+    print("The numbers in ascending order are: ", c, b, a)
+    print("The numbers in descending order are: ", a, b, c)
 
-#LARGEST NUMBER
-if a >= b and a >= c:
-    large = a
-elif b >= a and b >= c:
-    large = b
-elif c >= a and c >= b:
-    large = c
+
+
+# if (a <= c and a >= b) or (a <= b and a >= c):
+#     middle = a
+# elif (b <= a and b >= c) or (b <= c and b >= a):
+#     middle = b
+# elif (c <= a and c >= b) or (c <= b and c >= a):
+#     middle = c
+
+# if a >= b and a >= c:
+#     large = a
+# elif b >= a and b >= c:
+#     large = b
+# elif c >= a and c >= b:
+#     large = c
 
 #Now displaying user input which is sorted high to low, low to high
-print("The numbers in ascending order are: ", small, middle, large)
-print("The numbers in descending order are: ", large, middle, small)
+# print("The numbers in ascending order are: ", small, middle, large)
+# print("The numbers in descending order are: ", large, middle, small)
