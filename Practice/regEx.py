@@ -1,0 +1,72 @@
+import re
+
+#Most RegEx re.compile() strings will be raw strings, re.compile(r'')
+#This file follows, "Automate the Boring Stuff with Python" Chapter 7
+
+print('\nString to search for phone number: \'My number is, 415-555-9999.\'')
+print('\nSimple search and return')
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+print(phoneNumRegex.search('My number is, 415-555-9999.'))
+
+print('\nSimple search and return, but using a Match Object.')
+mo = phoneNumRegex.search('My number is, 415-555-9999.')
+print(mo.group())
+
+print('\nSimple search and return, but using a Match Object with two groups.')
+phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d-\d\d\d\d)')
+mo = phoneNumRegex.search('My number is, 415-555-9999.')
+print("Group 1: ", mo.group(1))
+print("Group 2: ", mo.group(2))
+
+print('\nIdentifying parentheses around the area code.')
+phoneNumRegex = re.compile(r'\(\d\d\d\) \d\d\d-\d\d\d\d')
+mo = phoneNumRegex.search('My number is, (415) 555-9999.')
+print(mo.group())
+
+print('\nUsing the | (or) operator to search for mixed possibilities')
+batRegex = re.compile(r'Bat(man|mobile|copter|bat)')
+mo = batRegex.search('Batmobile lost a wheel.')
+print(mo.group())
+mo = batRegex.search('Batmotorcycle lost a wheel.')
+print(mo) #None, because None doesn't have a member function, group()
+mo = batRegex.search('Batmobile lost a wheel.')
+print(mo.group(1))
+
+print('\nUsing the ?, *, +, {} operator for optional, 0 or more, one or more, or set number of possibilities')
+batRegex = re.compile(r'Bat(wo)?man')
+mo1 = batRegex.search('The Adventures of Batman')
+print(mo1.group())
+mo2 = batRegex.search('The Adventures of Batwoman')
+print(mo2.group())
+print('\nThis is with an optional area code phone number, using grouping and ? operator')
+phoneRegex = re.compile(r'(\d\d\d-)?\d\d\d-\d\d\d\d')
+mo1 = phoneRegex.search('My number is 415-555-4242')
+print(mo1.group())
+mo2 = phoneRegex.search('My number is 555-4242')
+print(mo2.group())
+
+print('\nMatching Zero or More with the Star')
+batRegex = re.compile(r'Bat(wo)*man')
+mo1 = batRegex.search('The Adventures of Batman')
+print(mo1.group())
+mo2 = batRegex.search('The Adventures of Batwoman')
+print(mo2.group())
+mo3 = batRegex.search('The Adventures of Batwowowowoman')
+print(mo3.group())
+
+print('\nMatching One or More with the Plus')
+batRegex = re.compile(r'Bat(wo)+man')
+mo1 = batRegex.search('The Adventures of Batwoman')
+print(mo1.group())
+mo2 = batRegex.search('The Adventures of Batwowowowoman')
+print(mo2.group())
+mo3 = batRegex.search('The Adventures of Batman')
+print(mo)
+
+print('\nMatching Specific Repetitions with Braces. Also takes a range, ex. {3,5} "three to five", or {3,} "three or more."' +
+        ' RegEx will always default "greedy" matches so returns max size find in a range. Add ? after curly braces for nonGreedy match, {3,5}?, returns 3 sized match first')
+haRegex = re.compile(r'(Ha){3}')
+mo1 = haRegex.search('HaHaHa')
+print(mo1.group())
+mo2 = haRegex.search('Ha')
+print(mo2)
