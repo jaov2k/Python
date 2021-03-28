@@ -23,14 +23,34 @@ import re
 # RETURN VALUES:
 # FUNCTION SINGATURE:
 def createFile():
-    filename = input("Please enter a filename: ")
-    print("Filename start is proper...") if re.findall("\A[a-z]|[A-Z]|_",filename) else print("improper filename")
+    #fname = input('Enter a fname: ')
+    fname = "!?1s_1s_4_Pr0p3r_N4m3.7x7"
+    print ("The fname entered was: ", fname)
+    
+    #Check first character
+    fnameRE = re.compile(r'\A[^a-zA-z_]')
+    if fnameRE.findall(fname):
+        print("Invalid first character. Only A-Z, a-z, or '_'")
+        print ('"', *fnameRE.findall(fname), '"', end=' - is invalid\n')
+    else:
+        print("Valid first character...")
+
+    #Check fname
+    fnameRE = re.compile(r'(\W)\.(\W){3}')
+    if fnameRE.search(fname):
+        print("Invalid fname. Only A-Z, a-z, 0-9, or '_'")
+        print ('"', *fnameRE.findall(fname), '"', end=' - is invalid\n')
+    else:
+        print("Valid fname...")
+
+
 
 if __name__ == "__main__":
-    while True:
-        createFile()
-        replay = input("Play again? (y/n): ")
-        if replay.lower() == 'y':
-            continue
-        else:
-            break
+    createFile()
+    # while True:
+    #     createFile()
+    #     replay = input("Play again? (y/n): ")
+    #     if replay.lower() == 'y':
+    #         continue
+    #     else:
+    #         break
