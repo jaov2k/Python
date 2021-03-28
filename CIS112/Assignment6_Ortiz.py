@@ -10,7 +10,6 @@
 
 
 #TODO: create file
-#TODO: is fileName Proper. Filename, including extension must be A-Z,a-z, or '_'
 #TODO: input sentence. Must prompt for addition sentences
 #TODO: output file content
 #TODO: #replay
@@ -25,14 +24,12 @@ def isProperFirstChar(fname:str) -> bool:
         print('Filename only can start with Alphabets or "_".')
         return False
     else:
-        print("Valid first character...")
         return True
 
 def isProperExtension(fname:str) -> bool:
     '''To check whether the filename contains a '.' thus an extension'''
     fnameRE = re.compile(r'[\.]')
     if fnameRE.findall(fname):
-        print("Valid extension...")
         return True
     else:
         print("File name needs to have an extension.")
@@ -45,25 +42,37 @@ def isProperFilename(fname:str) -> bool:
         print('Filename can contain only Alphabets, digits and "_".')
         return False
     else:
-        print("Valid filename...")
         return True
 
 def createFile():
-    #fname = input('Enter a fname: ')
-    fname = "Th1s_1s_4_Pr0p3r_N4m3.7x7"
-    print ("The fname entered was: ", fname)
+    fname = input('Please enter a filename: ')
+    if isProperFirstChar(fname) and isProperExtension(fname) and isProperFilename(fname):
+        while True:
+            with open(fname, "a+" ) as file:
+                content = input("Please enter a sentence: ") + "\n"
+                file.write(content)             
+            if input("Do you want to add more lines? (Y/N) ").lower() == 'y':
+                continue
+            else:
+                break
 
-    if isProperExtension(fname) and isProperFirstChar(fname) and isProperFilename(fname):
-        print ("filename good...")
+        with open(fname,"r") as file:
+            print("This is what's entered into file", fname)
+            print("=============================")
+            content = file.readlines()
+            for line in content:                
+                print(line, end='\r')
+            print("=============================")
     else:
         print("filename bad...")
 
 if __name__ == "__main__":
-    createFile()
-    # while True:
-    #     createFile()
-    #     replay = input("Play again? (y/n): ")
-    #     if replay.lower() == 'y':
-    #         continue
-    #     else:
-    #         break
+    while True:
+        createFile()
+        replay = input("Do you want to create another file? (Y/N) ")
+        if replay.lower() == 'y':
+            print("Let's create another file.")
+            continue
+        else:
+            print("Thank you for playing!")
+            break
