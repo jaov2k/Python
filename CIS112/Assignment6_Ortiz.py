@@ -18,32 +18,45 @@
 
 import re
 
-# PURPOSE:
-# PARAMETERS:
-# RETURN VALUES:
-# FUNCTION SINGATURE:
-def createFile():
-    #fname = input('Enter a fname: ')
-    fname = "!?1s_1s_4_Pr0p3r_N4m3.7x7"
-    print ("The fname entered was: ", fname)
-    
-    #Check first character
+def isProperFirstChar(fname:str) -> bool:
+    '''To check whether the first character of the filename meets the criteria'''
     fnameRE = re.compile(r'\A[^a-zA-z_]')
     if fnameRE.findall(fname):
-        print("Invalid first character. Only A-Z, a-z, or '_'")
-        print ('"', *fnameRE.findall(fname), '"', end=' - is invalid\n')
+        print('Filename only can start with Alphabets or "_".')
+        return False
     else:
         print("Valid first character...")
+        return True
 
-    #Check fname
-    fnameRE = re.compile(r'(\W)\.(\W){3}')
-    if fnameRE.search(fname):
-        print("Invalid fname. Only A-Z, a-z, 0-9, or '_'")
-        print ('"', *fnameRE.findall(fname), '"', end=' - is invalid\n')
+def isProperExtension(fname:str) -> bool:
+    '''To check whether the filename contains a '.' thus an extension'''
+    fnameRE = re.compile(r'[\.]')
+    if fnameRE.findall(fname):
+        print("Valid extension...")
+        return True
     else:
-        print("Valid fname...")
+        print("File name needs to have an extension.")
+        return False
 
+def isProperFilename(fname:str) -> bool:
+    '''To check whether the filename meets the criteria'''
+    fnameRE = re.compile(r'[^a-zA-Z0-9\_\.]')
+    if fnameRE.findall(fname):
+        print('Filename can contain only Alphabets, digits and "_".')
+        return False
+    else:
+        print("Valid filename...")
+        return True
 
+def createFile():
+    #fname = input('Enter a fname: ')
+    fname = "Th1s_1s_4_Pr0p3r_N4m3.7x7"
+    print ("The fname entered was: ", fname)
+
+    if isProperExtension(fname) and isProperFirstChar(fname) and isProperFilename(fname):
+        print ("filename good...")
+    else:
+        print("filename bad...")
 
 if __name__ == "__main__":
     createFile()
