@@ -6,14 +6,7 @@
 # PURPOSE:  A Python program which will take file name and it's content from the user.
 #           Save all the input from the user to the file that was created.
 #           Once user is done with providing the content, display the file content on the monitor.
-#           Features include using Function passing, and RegEx.
-
-
-#TODO: create file
-#TODO: input sentence. Must prompt for addition sentences
-#TODO: output file content
-#TODO: #replay
-
+#           Features include passing between Functions, and RegEx.
 
 import re
 
@@ -44,7 +37,19 @@ def isProperFilename(fname:str) -> bool:
     else:
         return True
 
-def createFile():
+def printFile(fname:str) -> None:
+    '''Displays the file content on the monitor'''
+    with open(fname,"r") as file:
+        print("This is what's entered into file", fname)
+        print("=============================")
+        content = file.readlines()
+        for line in content:                
+            print(line, end='\r')
+        print("=============================")
+
+def createFile() -> None:
+    ''' Takes file name and it's content from the user.
+        Saves all the input from the user to the file that was created.'''
     fname = input('Please enter a filename: ')
     if isProperFirstChar(fname) and isProperExtension(fname) and isProperFilename(fname):
         while True:
@@ -55,16 +60,8 @@ def createFile():
                 continue
             else:
                 break
-
-        with open(fname,"r") as file:
-            print("This is what's entered into file", fname)
-            print("=============================")
-            content = file.readlines()
-            for line in content:                
-                print(line, end='\r')
-            print("=============================")
-    else:
-        print("filename bad...")
+            
+    printFile(fname)
 
 if __name__ == "__main__":
     while True:
