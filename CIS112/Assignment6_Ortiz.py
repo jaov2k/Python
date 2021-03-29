@@ -21,7 +21,7 @@ def isProperFirstChar(fname:str) -> bool:
 
 def isProperExtension(fname:str) -> bool:
     '''To check whether the filename contains a '.' thus an extension'''
-    fnameRE = re.compile(r'[\.]')
+    fnameRE = re.compile(r'[\.].+')
     if fnameRE.findall(fname):
         return True
     else:
@@ -60,8 +60,7 @@ def createFile() -> None:
                 continue
             else:
                 break
-            
-    printFile(fname)
+        printFile(fname)
 
 if __name__ == "__main__":
     while True:
