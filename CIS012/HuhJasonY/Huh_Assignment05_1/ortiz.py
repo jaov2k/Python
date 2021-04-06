@@ -1,13 +1,14 @@
 def CalPay(hrs, rate):
     print("Hours entered are: ", hrs)
     print("Rate enteres is: ", rate)
+    
 
 def getInput(str):
     while True:
         if str == "hours":
-            inp = input("Please enter hours: ")
+            inp = input("Please enter hours: ") #strings
         elif str == "rate":
-            inp = input("Please enter rate: ")
+            inp = input("Please enter rate: ") #strings
         try:
             inp = float(inp)
         except ValueError:
