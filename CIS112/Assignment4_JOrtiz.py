@@ -11,15 +11,15 @@
 # FUNCTION NAME:
 #     isPrime
 # PURPOSE:
-#     to determine whether an inputted number is a prime number
+#     To determine whether an inputted number is a prime number
 # PARAMETER:
 #     int num
 # RETURN VALUE:
 #     bool
 # FUNCTION SINGATURE:
 #     isPrime(num)
- 
-def isPrime(num):
+def isPrime(num: int) -> bool:
+    '''To determine whether an inputted number is a prime number'''
     prime = True    
     i = 2
 
