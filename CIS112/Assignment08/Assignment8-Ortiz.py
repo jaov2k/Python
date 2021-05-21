@@ -12,7 +12,7 @@ from PyPDF2 import PdfFileMerger
 import glob
 
 # Create a list of all the PDF files in the directory and sort them
-PLearn = list(glob.glob("*.pdf")) # relative pathing
+PLearn = list(glob.glob("*.pdf")) # relative pathing; set working directory to same as py file.
 PLearn.sort()
 
 # Creates a merge object for appending PDF files to, and appends the list
