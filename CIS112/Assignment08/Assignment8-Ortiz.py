@@ -9,12 +9,10 @@
 # Import necessary modules
 from pathlib import Path
 from PyPDF2 import PdfFileMerger
-
-# Set path where PDF files are saved
-PDF_path = Path('d:/repos/Python/CIS112/Assignment08/')
+import glob
 
 # Create a list of all the PDF files in the directory and sort them
-PLearn = list(PDF_path.glob("p*[0-9].pdf"))
+PLearn = list(glob.glob("*.pdf")) # relative pathing
 PLearn.sort()
 
 # Creates a merge object for appending PDF files to, and appends the list
