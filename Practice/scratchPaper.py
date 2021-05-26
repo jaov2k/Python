@@ -13,10 +13,9 @@ while True:
     filename = input("enter filename: ")
     try:
         myFile = open(filename,"r")
+        break
     except:
         print("Incorrect filename or file does not exist. Try Again...")
-    else:
-        break
 data = myFile.read()
 paragraphs = data.split("\n")
 
